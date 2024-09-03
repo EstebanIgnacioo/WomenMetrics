@@ -1,0 +1,127 @@
+/* App.css */
+.dashboard-grid {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se ajusten en una nueva línea si es necesario */
+    gap: 20px; /* Espacio entre los elementos */
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  
+  .dashboard-grid > div {
+    flex: 1 1 calc(50% - 20px); /* Ajusta el ancho base para una cuadrícula 2x2 */
+    max-width: calc(50% - 20px); /* Asegura que el ancho máximo sea de la mitad menos el espacio del gap */
+    min-width: 300px; /* Ancho mínimo para los componentes, para evitar que se reduzcan demasiado */
+    box-sizing: border-box;
+  }
+  
+  /* Ajustes para pantallas más pequeñas */
+  @media (max-width: 768px) {
+    .dashboard-grid > div {
+      flex: 1 1 100%; /* Hace que los componentes ocupen el 100% del ancho disponible en pantallas pequeñas */
+      max-width: 100%; /* Ancho máximo del 100% en pantallas pequeñas */
+    }
+  }
+  
+ /* App.css */
+
+.app-container {
+    display: flex;
+  }
+  
+/* Estilo para el navbar */
+.navbar {
+    width: 200px; /* Ancho del navbar expandido */
+    background-color: #230f3b69; /* Color morado oscuro */
+    color: white;
+    height: 100vh; /* Altura completa de la ventana */
+    padding: 20px;
+    box-sizing: border-box;
+    position: fixed; /* Fija el navbar en el lateral */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+    overflow: hidden; /* Oculta el contenido que se sale del contenedor */
+    transition: width 0.3s ease, padding 0.3s ease; /* Transición suave para el ancho y padding */
+  }
+  
+  /* Estilo para el navbar contraído */
+  .navbar.collapsed {
+    width: 60px; /* Ancho del navbar contraído */
+    padding: 10px; /* Padding reducido en el estado contraído */
+  }
+  
+  /* Estilo para el título en el navbar */
+  .navbar h2 {
+    margin: 0;
+    font-size: 1.2em; /* Tamaño de fuente más pequeño */
+    transition: opacity 0.3s ease; /* Transición suave para la opacidad */
+    text-align: left; /* Alineación del texto a la izquierda */
+  }
+  
+  /* Estilo para el navbar contraído */
+  .navbar.collapsed h2 {
+    opacity: 0; /* Oculta el título en el estado contraído */
+  }
+  
+  /* Estilo para la lista en el navbar */
+  .navbar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    transition: opacity 0.3s ease; /* Transición suave para la opacidad de la lista */
+  }
+  
+  /* Estilo para cada elemento de la lista en el navbar */
+  .navbar li {
+    margin: 15px 0; /* Margen reducido */
+    padding: 10px;
+    cursor: pointer; /* Cambia el cursor para indicar que es clickeable */
+    transition: background-color 0.3s ease, padding 0.3s ease; /* Transición suave para el hover y padding */
+    border-radius: 8px; /* Radio de borde reducido */
+    display: flex; /* Usar flexbox para alinear los íconos y el texto */
+    align-items: center;
+    justify-content: flex-start; /* Alinea el contenido a la izquierda */
+  }
+  
+  /* Estilo para el hover sobre los elementos de la lista */
+  .navbar li:hover {
+    background-color: #6a1b9a; /* Color morado más claro al pasar el mouse */
+  }
+  
+  /* Estilo para los íconos */
+  .navbar .icon {
+    font-size: 1.4em; /* Tamaño de ícono en el estado expandido */
+    display: block; /* Muestra los íconos en todos los estados */
+    margin-right: 10px; /* Espacio entre el ícono y el texto */
+    transition: font-size 0.3s ease; /* Transición suave para el tamaño del ícono */
+  }
+  
+  /* Mostrar íconos en el navbar contraído */
+  .navbar.collapsed .icon {
+    font-size: 1.2em; /* Tamaño ligeramente más pequeño de los íconos en el estado contraído */
+  }
+  
+  /* Mostrar texto solo en el navbar expandido */
+  .navbar .text {
+    display: block; /* Muestra el texto en el estado expandido */
+    white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+    transition: opacity 0.3s ease; /* Transición suave para la opacidad del texto */
+    text-align: left; /* Alineación del texto a la izquierda */
+  }
+  
+  /* Ocultar texto en el navbar contraído */
+  .navbar.collapsed .text {
+    display: none; /* Oculta el texto en el estado contraído */
+  }
+  
+  /* Estilo para el contenido principal */
+  .main-content {
+    margin-left: 200px; /* Ajusta el margen según el ancho del navbar expandido */
+    padding: 20px;
+    width: calc(100% - 200px); /* Ajusta el ancho restante */
+    transition: margin-left 0.3s ease, width 0.3s ease; /* Transición suave para los cambios */
+  }
+  
+  /* Ajusta el margen del contenido principal cuando el navbar está contraído */
+  .navbar.collapsed ~ .main-content {
+    margin-left: 60px; /* Ajusta el margen según el ancho del navbar contraído */
+    width: calc(100% - 60px); /* Ajusta el ancho restante */
+  }
