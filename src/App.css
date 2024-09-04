@@ -86,18 +86,17 @@
     background-color: #6a1b9a; /* Color morado más claro al pasar el mouse */
   }
   
-  /* Estilo para los íconos */
-  .navbar .icon {
-    font-size: 1.4em; /* Tamaño de ícono en el estado expandido */
-    display: block; /* Muestra los íconos en todos los estados */
-    margin-right: 10px; /* Espacio entre el ícono y el texto */
-    transition: font-size 0.3s ease; /* Transición suave para el tamaño del ícono */
-  }
-  
-  /* Mostrar íconos en el navbar contraído */
-  .navbar.collapsed .icon {
-    font-size: 1.2em; /* Tamaño ligeramente más pequeño de los íconos en el estado contraído */
-  }
+/* Estilo para los íconos en el navbar expandido */
+.navbar ion-icon {
+  margin-right: 10px; /* Margen derecho para separar el ícono del texto */
+}
+
+/* Ajustar el margen del ícono cuando el navbar está colapsado */
+.navbar.collapsed ion-icon {
+  margin-right: 0; /* Elimina el margen cuando el navbar está colapsado */
+}
+
+
   
   /* Mostrar texto solo en el navbar expandido */
   .navbar .text {

@@ -13,22 +13,22 @@ function Navbar() {
       <h2>Women Metrics</h2>
       <ul>
         <li>
-          <span className="icon">🏠</span>
+          <ion-icon name="home"></ion-icon>
           <span className="text">Home</span>
         </li>
         <li>
-          <span className="icon">📊</span>
-          <span className="text">About</span>
+          <ion-icon name="chatbubbles"></ion-icon>
+          <span className="text">ChatBot</span>
         </li>
         <li>
-          <span className="icon">📞</span>
-          <span className="text">Contact</span>
-        </li>
-        <li>
-          <span className="icon">📈</span>
+          <ion-icon name="analytics"></ion-icon>
           <span className="text">Dashboard</span>
         </li>
       </ul>
+      <li>
+        <ion-icon name="help"></ion-icon>
+        <span className="text">About us</span>
+      </li>
     </nav>
   );
 }
