@@ -1,9 +1,17 @@
 import React from 'react';
-import Navbar from './navbar'; // Asegúrate de que la ruta sea correcta
-import Dashboard from './dashboard'; // Asegúrate de que la ruta sea correcta
-import './App.css'; // Asegúrate de tener este archivo CSS
+import Navbar from '../components/pages/navbar2'; 
+import Dashboard from '../components/pages/dashboard'; 
 
-function App() {
+
+
+import '../styles/App.css'; // Asegúrate de tener este archivo CSS
+
+function Dashboards() {
+
+
+
+
+
   // Definir datos diferentes para cada Dashboard
   const dashboardData = [
     {
@@ -59,4 +67,4 @@ function App() {
   );
 }
 
-export default App;
+export default Dashboards;

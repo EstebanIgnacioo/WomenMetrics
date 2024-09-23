@@ -1,6 +1,6 @@
 // dashboard.jsx
 import React from 'react';
-import './App.css'; // Asegúrate de que este archivo exista y esté en la ruta correcta
+import '../../styles/App.css'; // Asegúrate de que este archivo exista y esté en la ruta correcta
 import {
   Table,
   TableBody,

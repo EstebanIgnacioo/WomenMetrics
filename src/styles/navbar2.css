@@ -1,33 +1,3 @@
-/* App.css */
-.dashboard-grid {
-    display: flex;
-    flex-wrap: wrap; /* Permite que los elementos se ajusten en una nueva línea si es necesario */
-    gap: 20px; /* Espacio entre los elementos */
-    padding: 10px;
-    box-sizing: border-box;
-  }
-  
-  .dashboard-grid > div {
-    flex: 1 1 calc(50% - 20px); /* Ajusta el ancho base para una cuadrícula 2x2 */
-    max-width: calc(50% - 20px); /* Asegura que el ancho máximo sea de la mitad menos el espacio del gap */
-    min-width: 300px; /* Ancho mínimo para los componentes, para evitar que se reduzcan demasiado */
-    box-sizing: border-box;
-  }
-  
-  /* Ajustes para pantallas más pequeñas */
-  @media (max-width: 768px) {
-    .dashboard-grid > div {
-      flex: 1 1 100%; /* Hace que los componentes ocupen el 100% del ancho disponible en pantallas pequeñas */
-      max-width: 100%; /* Ancho máximo del 100% en pantallas pequeñas */
-    }
-  }
-  
- /* App.css */
-
-.app-container {
-    display: flex;
-  }
-  
 /* Estilo para el navbar */
 .navbar {
     width: 200px; /* Ancho del navbar expandido */
@@ -88,7 +58,7 @@
   
 /* Estilo para los íconos en el navbar expandido */
 .navbar ion-icon {
-  margin-right: 10px; /* Margen derecho para separar el ícono del texto */
+  margin-right: 5px; /* Margen derecho para separar el ícono del texto */
 }
 
 /* Ajustar el margen del ícono cuando el navbar está colapsado */
