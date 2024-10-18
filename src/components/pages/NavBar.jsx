@@ -1,6 +1,7 @@
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import '../../styles/NavBar.css';
+import Logo from '../../assets/img/Logo_1_black.png';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
@@ -8,9 +9,9 @@ function classNames(...classes) {
 
 export default function NavBar() {
   return (
-    <Disclosure as="nav" className="bg-800 fixed w-full z-50">
+    <Disclosure as="nav" className="bg-800 fixed w-full z-50 min-h-[4rem] shadow-md"> {/* Agregado shadow-md */}
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-        <div className="relative flex h-16 items-center justify-between">
+        <div className="relative flex items-center justify-between min-h-[4rem]"> {/* Ajusta altura mínima */}
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
             {/* Mobile menu button */}
             <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
@@ -24,23 +25,23 @@ export default function NavBar() {
             {/* Imagen visible en escritorio y oculta en móvil */}
             <img
               alt="Your Company"
-              src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-              className="h-8 w-auto hidden sm:block" // Oculta en móvil
+              src={Logo}
+              className="h-12 w-auto hidden sm:block" // Agranda la imagen a h-24
             />
           </div>
           <div className="flex flex-1 items-center justify-center sm:items-stretch">
-             {/* Imagen visible solo en móvil, oculta en escritorio */}
-        <img
-          alt="Your Company"
-          src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-          className="h-8 w-auto sm:hidden" // Oculta en escritorio
-        />
+            {/* Imagen visible solo en móvil, oculta en escritorio */}
+            <img
+              alt="Your Company"
+              src={Logo}
+              className="h-16 w-auto sm:hidden" // Oculta en escritorio
+            />
             <div className="hidden sm:ml-6 sm:block">
               <div className="flex space-x-4 justify-center">
-                <a href="#" className="nav-link">Home</a>
-                <a href="#" className="nav-link">Noticias</a>
-                <a href="#" className="nav-link">Descargar</a>
-                <a href="#" className="nav-link">Ayuda</a>
+                <a href="/" className="nav-link">Home</a>
+                <a href="/noticias" className="nav-link">Noticias</a>
+                <a href="/descargar" className="nav-link">Descargar</a>
+                <a href="/ayuda" className="nav-link">Ayuda</a>
               </div>
             </div>
           </div>
@@ -51,24 +52,23 @@ export default function NavBar() {
             </button>
           </div>
         </div>
-       
       </div>
 
       <DisclosurePanel className="sm:hidden">
         <div className="space-y-1 px-2 pb-3 pt-2">
-          <DisclosureButton as="a" href="#" className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
+          <DisclosureButton as="a" href="/" className="block rounded-md px-3 py-2 text-base font-medium text-black hover:bg-gray-700 hover:text-white">
             Home
           </DisclosureButton>
-          <DisclosureButton as="a" href="#" className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
+          <DisclosureButton as="a" href="/noticias" className="block rounded-md px-3 py-2 text-base font-medium text-black hover:bg-gray-700 hover:text-white">
             Noticias
           </DisclosureButton>
-          <DisclosureButton as="a" href="#" className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
+          <DisclosureButton as="a" href="/descargar" className="block rounded-md px-3 py-2 text-base font-medium text-black hover:bg-gray-700 hover:text-white">
             Descargar
           </DisclosureButton>
-          <DisclosureButton as="a" href="#" className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
+          <DisclosureButton as="a" href="/ayuda" className="block rounded-md px-3 py-2 text-base font-medium text-black hover:bg-gray-700 hover:text-white">
             Ayuda
           </DisclosureButton>
-          <DisclosureButton as="button" className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
+          <DisclosureButton as="button" className="block rounded-md px-3 py-2 text-base font-medium text-black hover:bg-gray-700 hover:text-white">
             Iniciar Sesión
           </DisclosureButton>
         </div>
