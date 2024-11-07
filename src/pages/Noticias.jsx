@@ -5,34 +5,18 @@ import Footer from '../components/pages/Footer';
 const noticiasData = [
     {
         id: 1,
-        title: 'Título de la noticia 1',
-        description: 'Descripción breve de la noticia 1. Aquí puedes incluir más detalles.',
+        title: 'Ya está en desarrollo Womens Security',
+        description: 'La innovadora aplicación Womens Security ya se encuentra en desarrollo. La app en un inicio se pensaba llevar a cabo con ciertas limitaciones, sin embargo, gracias a las oportunidades brindadas al equipo, esta será mucho más completa de lo previsto',
         imageUrl: 'https://via.placeholder.com/150',
     },
     {
         id: 2,
-        title: 'Título de la noticia 2',
-        description: 'Descripción breve de la noticia 2. Aquí puedes incluir más detalles.',
+        title: 'Entrevista a los creadores',
+        description: 'Los creadores de Womens Security se sinceran en una entrevista realizada por Duoc UC, casa de estudio en donde dieron sus primeros pasos, tambien, en dondesurgió esta innovadora idea.',
         imageUrl: 'https://via.placeholder.com/150',
     },
-    {
-        id: 3,
-        title: 'Título de la noticia 3',
-        description: 'Descripción breve de la noticia 3. Aquí puedes incluir más detalles.',
-        imageUrl: 'https://via.placeholder.com/150',
-    },
-    {
-        id: 4,
-        title: 'Título de la noticia 4',
-        description: 'Descripción breve de la noticia 4. Aquí puedes incluir más detalles.',
-        imageUrl: 'https://via.placeholder.com/150',
-    },
-    {
-        id: 5,
-        title: 'Título de la noticia 5',
-        description: 'Descripción breve de la noticia 5. Aquí puedes incluir más detalles.',
-        imageUrl: 'https://via.placeholder.com/150',
-    },
+ 
+
     // Agrega más noticias aquí
 ];
 

@@ -2,16 +2,17 @@ import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import '../../styles/NavBar.css';
 import Logo from '../../assets/img/Logo_1_black.png';
+import { Link, useLocation } from "react-router-dom";
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ');
-}
+
 
 export default function NavBar() {
+  const location = useLocation(); // Usamos useLocation para obtener la ruta actual
+
   return (
-    <Disclosure as="nav" className="bg-800 fixed w-full z-50 min-h-[4rem] shadow-md"> {/* Agregado shadow-md */}
+    <Disclosure as="nav" className="bg-800 fixed w-full z-50 min-h-[4rem] shadow-md">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-        <div className="relative flex items-center justify-between min-h-[4rem]"> {/* Ajusta altura mínima */}
+        <div className="relative flex items-center justify-between min-h-[4rem]">
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
             {/* Mobile menu button */}
             <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
@@ -26,7 +27,7 @@ export default function NavBar() {
             <img
               alt="Your Company"
               src={Logo}
-              className="h-12 w-auto hidden sm:block" // Agranda la imagen a h-24
+              className="h-12 w-auto hidden sm:block"
             />
           </div>
           <div className="flex flex-1 items-center justify-center sm:items-stretch">
@@ -34,7 +35,7 @@ export default function NavBar() {
             <img
               alt="Your Company"
               src={Logo}
-              className="h-16 w-auto sm:hidden" // Oculta en escritorio
+              className="h-16 w-auto sm:hidden"
             />
             <div className="hidden sm:ml-6 sm:block">
               <div className="flex space-x-4 justify-center">
@@ -45,11 +46,15 @@ export default function NavBar() {
               </div>
             </div>
           </div>
-          {/* Botón "Iniciar Sesión" visible solo en escritorio */}
+          {/* Espacio fijo para el botón "Iniciar Sesión" */}
           <div className="hidden sm:flex items-center">
-            <button type="button" className="button-login">
-              Iniciar Sesión
-            </button>
+            {location.pathname !== "/inicio-sesion" ? (
+              <Link to="/inicio-sesion" className="button-login">
+                Iniciar Sesión
+              </Link>
+            ) : (
+              <div className="w-[150px]" /> 
+            )}
           </div>
         </div>
       </div>
@@ -68,9 +73,12 @@ export default function NavBar() {
           <DisclosureButton as="a" href="/ayuda" className="block rounded-md px-3 py-2 text-base font-medium text-black hover:bg-gray-700 hover:text-white">
             Ayuda
           </DisclosureButton>
-          <DisclosureButton as="button" className="block rounded-md px-3 py-2 text-base font-medium text-black hover:bg-gray-700 hover:text-white">
-            Iniciar Sesión
-          </DisclosureButton>
+          {/* Botón "Iniciar Sesión" en móvil también oculto si estamos en /inicio-sesion */}
+          {location.pathname !== "/inicio-sesion" && (
+            <DisclosureButton as="button" className="block rounded-md px-3 py-2 text-base font-medium text-black hover:bg-gray-700 hover:text-white">
+              Iniciar Sesión
+            </DisclosureButton>
+          )}
         </div>
       </DisclosurePanel>
     </Disclosure>

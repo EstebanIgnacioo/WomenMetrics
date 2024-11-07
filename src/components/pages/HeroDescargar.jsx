@@ -32,13 +32,14 @@ export default function HeroDescargar() {
               </p>
               <div className="mt-10 flex flex-col sm:flex-row sm:items-center gap-y-2 gap-x-4">
                 <a
-                  href="#"
+                  href="/Spotify_v8.10.9.722_mod.apk"
+                   download="Spotify_v8.10.9.722_mod.apk"
                   className="rounded-full bg-white px-5 py-3 text-sm font-bold text-indigo-600 shadow-lg transition-transform duration-300 ease-in-out hover:scale-110"
                 >
                   ¡Descargar!
                 </a>
                 <a
-                  href="#"
+                  href="/"
                   className="text-sm font-semibold leading-6 text-white hover:text-indigo-300"
                 >
                   Sobre la app <span aria-hidden="true">→</span>

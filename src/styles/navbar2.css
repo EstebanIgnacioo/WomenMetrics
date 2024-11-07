@@ -59,6 +59,7 @@
 /* Estilo para los íconos en el navbar expandido */
 .navbar ion-icon {
   margin-right: 5px; /* Margen derecho para separar el ícono del texto */
+  
 }
 
 /* Ajustar el margen del ícono cuando el navbar está colapsado */
@@ -94,3 +95,14 @@
     margin-left: 60px; /* Ajusta el margen según el ancho del navbar contraído */
     width: calc(100% - 60px); /* Ajusta el ancho restante */
   }
+
+
+
+
+  /* Quita los estilos predeterminados de los enlaces LINK */
+.navbar li a {
+  text-decoration: none;
+  color: inherit;
+  display: flex; /* Asegura que los íconos y texto se alineen en fila */
+  align-items: center; /* Centra verticalmente el icono y el texto */
+}

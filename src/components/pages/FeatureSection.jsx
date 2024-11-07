@@ -38,7 +38,7 @@ const features = [
 
 const FeaturesSection = () => {
   return (
-    <div className="py-20 px-6 lg:px-8 bg-white"> {/* Fondo blanco */}
+    <div id='SobreLaApp' className="py-20 px-6 lg:px-8 bg-white"> {/* Fondo blanco */}
 
       {/* Encabezado principal */}
       <h1 className="text-5xl font-bold text-[#230f3b] text-center mb-4">Conoce Women's Security</h1>
