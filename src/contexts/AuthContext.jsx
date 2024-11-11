@@ -66,6 +66,7 @@ export const AuthContextProvider = ({ children }) => {
   //  return <div>Loading...</div>; // Puedes poner un spinner de carga aquí si lo prefieres
   //} //
 
+
   return (
     <AuthContext.Provider value={{ user, authReady, login, logout }}>
       {children}

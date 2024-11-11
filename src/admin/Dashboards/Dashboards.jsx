@@ -1,66 +1,43 @@
 "use client";
+
 import React from 'react';
-import Dashboard from '../../components/pages/dashboard';
- 
-
-
+import PieChart from '../../components/pages/PieChart';
+import CardsAlertas from '../../components/pages/CardsAlertas';
+import ChartDepartamento from '../../components/pages/ChartDepartamento';
+import PieAlertasMes from '../../components/pages/PieAlertasMes';
+import TableUsuariosComuna from '../../components/pages/TableUsuariosComuna';
 
 import '../../styles/App.css'; // Asegúrate de tener este archivo CSS
 
 function Dashboards() {
-
-
-
-
-
-  // Definir datos diferentes para cada Dashboard
-  const dashboardData = [
-    {
-      chartData: [
-        { x: "Esteban", bar1: 186, bar2: 80 },
-        { x: "Jorge", bar1: 305, bar2: 200 },
-        { x: "Gabriel", bar1: 237, bar2: 120 },
-        { x: "Camilo", bar1: 237, bar2: 120 },
-      ],
-      chartConfig: {
-        bar1: { color: "#2563eb" },
-        bar2: { color: "#60a5fa" },
-      },
-      tableData: [
-        { invoice: "INV001", status: "Paid", method: "Credit Card", amount: "$250.00" },
-        { invoice: "INV002", status: "Unpaid", method: "Cash", amount: "$150.00" },
-      ],
-    },
-    
-    {
-      chartData: [
-        { x: "April", bar1: 73, bar2: 190 },
-        { x: "May", bar1: 209, bar2: 130 },
-        { x: "June", bar1: 214, bar2: 140 },
-      ],
-      chartConfig: {
-        bar1: { color: "#2563eb" },
-        bar2: { color: "#60a5fa" },
-      },
-      tableData: [
-        { invoice: "INV003", status: "Paid", method: "Bank Transfer", amount: "$300.00" },
-        { invoice: "INV004", status: "Pending", method: "Credit Card", amount: "$200.00" },
-      ],
-    },
-  ];
-
   return (
-    <div className="app-container">
-      <div className="main-content">
-        <div className="dashboard-grid">
-          {dashboardData.map((data, index) => (
-            <Dashboard
-              key={index}
-              chartData={data.chartData}
-              chartConfig={data.chartConfig}
-              tableData={data.tableData}
-            />
-          ))}
+    <div className="app-container flex justify-center">
+      {/* Contenedor principal con Tailwind Flexbox y Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-6xl w-full">
+        
+        {/* Contenedor de PieChart */}
+
+          <PieChart />
+        
+
+        {/* Contenedor de PieAlertasMes */}
+
+          <PieAlertasMes />
+
+
+        {/* Contenedor de ChartDepartamento */}
+
+          <ChartDepartamento />
+
+
+        {/* CardsAlertas en una fila por debajo */}
+        <div className="col-span-1 md:col-span-2 lg:col-span-3 flex justify-center items-center p-5 rounded-lg shadow-lg bg-transparent">
+          <CardsAlertas />
+        </div>
+
+        {/* TableUsuariosComuna en una fila por debajo */}
+        <div className="col-span-1 md:col-span-2 lg:col-span-3 flex justify-center items-center p-5 rounded-lg shadow-lg bg-transparent">
+          <TableUsuariosComuna />
         </div>
         
       </div>
