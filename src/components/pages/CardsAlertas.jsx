@@ -47,7 +47,9 @@ function AlertasDashboard() {
   );
 
   return (
-    <div className="bg-purple-800 bg-opacity-50 backdrop-blur-md p-8 rounded-xl shadow-2xl flex justify-center items-center">
+    <div 
+    style={{ backgroundColor: "#1f0a1e", border: "1px solid #3b1c3a" }}
+    className=" p-8 rounded-xl shadow-lg flex justify-center items-center w-full">
       <div className="flex space-x-6 justify-center">
         {/* Card de ALERTAS */}
         <Card title="ALERTAS" value={data.total_alertas} />

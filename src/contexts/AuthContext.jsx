@@ -66,6 +66,11 @@ export const AuthContextProvider = ({ children }) => {
   //  return <div>Loading...</div>; // Puedes poner un spinner de carga aquí si lo prefieres
   //} //
 
+  // Renderizado condicional para asegurar que solo se muestren los children cuando authReady sea true
+  if (!authReady) {
+    return <div>Loading...</div>; // Puedes poner un spinner de carga aquí si lo prefieres
+  } 
+
 
   return (
     <AuthContext.Provider value={{ user, authReady, login, logout }}>

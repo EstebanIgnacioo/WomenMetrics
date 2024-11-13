@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from "axios";
 import Navbar from '../../components/pages/navbar2';
+import { ChatBubbleBottomCenterIcon } from '@heroicons/react/24/outline';
 
 function ChatBot() {
   const [question, setQuestion] = useState("");
@@ -39,21 +40,35 @@ function ChatBot() {
 
   return (
     <>
-    
+      <div 
+      style={{  border: "1px solid #3b1c3a" }}
+      className="mx-auto w-[77%] bg-[#1f0a1e] p-10 rounded-xl flex items-center justify-between mb-6">
+      <div className="text-white">
+        <h2 className="text-5xl font-bold pb-2">ChatBot</h2>
+        <span className="block w-4/5 bg-[#834081] h-0.5"></span>
 
-      <div className="flex flex-col items-center justify-center min-h-screen">
-        <h1 className="text-4xl font-bold text-white-800 mb-6">ChatBot</h1>
+        <p className="text-m text-gray-300 mt-1">
+          Asistente virtual de completa disponibilidad para soporte.
+        </p>
+      </div>
+      <ChatBubbleBottomCenterIcon className="w-40 h-auto text-white p-4  rounded-full shadow-md" />
+    </div>
 
-        <div className="w-full max-w-4xl h-96 bg-gray-200 rounded-3xl overflow-y-scroll p-6 shadow-lg mb-6">
+      <div 
+      style={{ backgroundColor: "#1f0a1e", border: "1px solid #3b1c3a" }}
+      className="flex flex-col items-center justify-center w-[60%] mx-auto p-10 rounded-xl">
+        
+
+        <div className="w-full max-w-6xl h-[530px] bg-gray-200 rounded-3xl overflow-y-scroll p-6 shadow-lg mb-6">
           {answerList.length === 0 && (
-            <p className="text-gray-500 text-center my-auto">Envía un mensaje al bot para empezar la conversación</p>
+            <p className="text-white p-6 rounded-xl text-center my-auto translate-y-44 w-[70%] mx-auto bg-[#834081]">Envía un mensaje al bot para empezar la conversación</p>
           )}
           {answerList.map((message, index) => (
             <div key={index} className={`flex ${message.type === 'question' ? 'justify-end' : 'justify-start'} mb-4`}>
               <div
-                className={`max-w-xs p-4 rounded ${message.type === 'question'
-                  ? 'bg-pink-500 text-white'
-                  : 'bg-gray-300 text-gray-900'
+                className={`max-w-xs p-4  ${message.type === 'question'
+                  ? 'bg-pink-500 text-white rounded-tl-xl rounded-tr-xl rounded-bl-xl'
+                  : 'bg-[#421940] text-white rounded-tl-xl rounded-tr-xl rounded-br-xl'
                   }`}
               >
                 {message.content}
@@ -62,7 +77,7 @@ function ChatBot() {
           ))}
         </div>
 
-        <div className="flex items-center w-full max-w-4xl">
+        <div className="flex items-center w-full max-w-6xl">
           <textarea
             value={question}
             onChange={(e) => setQuestion(e.target.value)}

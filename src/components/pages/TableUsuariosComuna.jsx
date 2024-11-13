@@ -57,7 +57,9 @@ export default function UsuariosPorComunaTable() {
   const totalAlertasFiltradas = filteredUsuarios.reduce((acc, usuario) => acc + obtenerAlertasPorComuna(usuario.nombre_comuna), 0);
 
   return (
-    <div className="w-full">
+    <div 
+    style={{ backgroundColor: "#1f0a1e", border: "1px solid #3b1c3a" }}
+    className="w-full p-6 rounded-xl">
       {/* Campo de búsqueda */}
       <input
         type="text"
