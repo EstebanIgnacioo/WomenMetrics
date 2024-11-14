@@ -54,7 +54,7 @@ export default function PieChart() {
   }, []);
 
   return (
-    <Card className="flex flex-col">
+    <Card className="flex flex-col ">
       <CardHeader className="items-center pb-0">
         <CardTitle>Alertas por Comuna</CardTitle>
         <CardDescription>Del año actual</CardDescription>

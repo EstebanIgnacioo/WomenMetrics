@@ -49,20 +49,29 @@ function AlertasDashboard() {
   return (
     <div 
     style={{ backgroundColor: "#1f0a1e", border: "1px solid #3b1c3a" }}
-    className=" p-8 rounded-xl shadow-lg flex justify-center items-center w-full">
+    className=" p-8 rounded-xl shadow-lg flex justify-center items-center w-full ">
       <div className="flex space-x-6 justify-center">
-        {/* Card de ALERTAS */}
-        <Card title="ALERTAS" value={data.total_alertas} />
-        
-        {/* Card de ALERTAS DERIVADAS */}
-        <Card title="ALERTAS DERIVADAS" value={data.total_alertas_derivadas} />
-        
-        {/* Card de ALERTAS NO DERIVADAS */}
-        <Card title="ALERTAS NO DERIVADAS" value={data.total_alertas_no_derivadas} />
-        
-        {/* Card de Porcentaje */}
-        <Card title="PORCENTAJE DERIVADAS" value={`${porcentajeDerivadas}%`} />
-      </div>
+  {/* Card de ALERTAS */}
+  <div className="bg-[#552152] rounded-xl text-white p-4">
+    <Card title="ALERTAS" value={data.total_alertas} />
+  </div>
+
+  {/* Card de ALERTAS DERIVADAS */}
+  <div className="bg-[#552152] rounded-xl text-white p-4">
+    <Card title="ALERTAS DERIVADAS" value={data.total_alertas_derivadas} />
+  </div>
+
+  {/* Card de ALERTAS NO DERIVADAS */}
+  <div className="bg-[#552152] rounded-xl text-white p-4">
+    <Card title="ALERTAS NO DERIVADAS" value={data.total_alertas_no_derivadas} />
+  </div>
+
+  {/* Card de Porcentaje */}
+  <div className="bg-[#552152] rounded-xl text-white p-4">
+    <Card title="PORCENTAJE DERIVADAS" value={`${porcentajeDerivadas}%`} />
+  </div>
+</div>
+
     </div>
   );
 }

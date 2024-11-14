@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from "axios";
 import Navbar from '../../components/pages/navbar2';
-import { ChatBubbleBottomCenterIcon } from '@heroicons/react/24/outline';
+import { ChatBubbleBottomCenterIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
 
 function ChatBot() {
   const [question, setQuestion] = useState("");
@@ -59,16 +59,19 @@ function ChatBot() {
       className="flex flex-col items-center justify-center w-[60%] mx-auto p-10 rounded-xl">
         
 
-        <div className="w-full max-w-6xl h-[530px] bg-gray-200 rounded-3xl overflow-y-scroll p-6 shadow-lg mb-6">
+        <div className="w-full max-w-6xl h-[530px] bg-[#742d70] rounded-3xl overflow-y-scroll p-6 shadow-lg mb-6">
           {answerList.length === 0 && (
-            <p className="text-white p-6 rounded-xl text-center my-auto translate-y-44 w-[70%] mx-auto bg-[#834081]">Envía un mensaje al bot para empezar la conversación</p>
+            <div>
+            <ChatBubbleBottomCenterIcon className="w-20 pb-11 text-center mx-auto h-auto translate-y-52 bg-[#834081] text-white p-4  rounded-full shadow-md" />
+            <p className="text-white p-4 rounded-xl text-center my-auto translate-y-40 w-[70%] mx-auto bg-[#834081]">Envía un mensaje al bot para empezar la conversación</p>
+            </div>
           )}
           {answerList.map((message, index) => (
             <div key={index} className={`flex ${message.type === 'question' ? 'justify-end' : 'justify-start'} mb-4`}>
               <div
                 className={`max-w-xs p-4  ${message.type === 'question'
-                  ? 'bg-pink-500 text-white rounded-tl-xl rounded-tr-xl rounded-bl-xl'
-                  : 'bg-[#421940] text-white rounded-tl-xl rounded-tr-xl rounded-br-xl'
+                  ? 'bg-white text-black rounded-tl-xl rounded-tr-xl rounded-bl-xl'
+                  : 'bg-[#331331] text-white rounded-tl-xl rounded-tr-xl rounded-br-xl'
                   }`}
               >
                 {message.content}
@@ -82,15 +85,15 @@ function ChatBot() {
             value={question}
             onChange={(e) => setQuestion(e.target.value)}
             onKeyDown={handleKeyDown} // Detecta "Enter"
-            className="flex-1 p-2 text-lg rounded resize-none focus:outline-none focus:ring-2 focus:ring-blue-300 shadow-lg text-black"
+            className="flex-1 p-2 text-lg rounded bg-[#742d70] resize-none focus:outline-none focus:ring-2 focus:ring-blue-300 shadow-lg text-white"
             placeholder="Escribe tu pregunta..."
             rows="1"
           />
           <button
             onClick={generateAnswer}
-            className="ml-4 px-6 py-3 bg-pink-500 text-white text-lg rounded hover:bg-blue-600 focus:outline-none shadow-lg"
+            className="ml-4 px-6 py-3 bg-pink-500 text-white text-lg rounded hover:bg-[#331331] focus:outline-none shadow-lg"
           >
-            Enviar
+            <ArrowRightIcon className='h-5' />
           </button>
         </div>
       </div>

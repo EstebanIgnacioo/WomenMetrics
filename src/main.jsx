@@ -11,6 +11,11 @@ import Ayuda from "./pages/Ayuda";
 import Login from "./auth/inicio-sesion/inicio-sesion.jsx";
 import { AuthContextProvider } from "./contexts/AuthContext"; // Importa el proveedor de autenticación
 import AuthCheck from "./components/AuthCheck"; // Importa AuthCheck para proteger rutas
+import ListarComuna from "./admin/Comuna/ListarComuna";
+import ListarDepartamentos from "./admin/Departamento/ListarDepartamentos";
+import ListarGeneros from "./admin/Genero/ListarGenero";
+import ListarGravedades from "./admin/Gravedad/ListarGravedad";
+import ListarMunicipalidades from "./admin/Municipalidad/ListarMunicipalidades";
 
 import "./index.css";
 
@@ -36,6 +41,11 @@ createRoot(document.getElementById("root")).render(
           >
             <Route path="dashboard" element={<Dashboards />} /> {/* Ruta para Dashboard en layout Admin */}
             <Route path="chatbot" element={<ChatBot />} /> {/* Ruta para ChatBot en layout Admin */}
+            <Route path="comuna" element={<ListarComuna />} />
+            <Route path="departamento" element={<ListarDepartamentos />} />
+            <Route path="genero" element={<ListarGeneros />} />
+            <Route path="gravedad" element={<ListarGravedades />} />
+            <Route path="municipalidad" element={<ListarMunicipalidades />} />
           </Route>
         </Routes>
       </Router>

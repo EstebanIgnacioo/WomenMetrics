@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom"; // Importa useNavigate
 
 function Navbar() {
   const [collapsed, setCollapsed] = useState(true);
-
+  const [showDropdown, setShowDropdown] = useState(false);
   const { logout } = useAuth(); // Desestructura logout del contexto
 
 
@@ -16,6 +16,10 @@ function Navbar() {
     alert("Sesión cerrada correctamente");
   };
 
+
+  const toggleDropdown = () => {
+    setShowDropdown(!showDropdown);
+  };
 
 
   return (
@@ -27,18 +31,57 @@ function Navbar() {
       <h2 className='text-center'>Women Metrics</h2>
       <ul>
 
-        <li>
-          <Link to="/admin/Chatbot"> {/* Enlace a ChatBot */}
-            <ion-icon name="chatbubbles"></ion-icon>
-            <span className="text">ChatBot</span>
-          </Link>
-        </li>
+       
         <li>
           <Link to="/admin/Dashboard"> {/* Enlace a Dashboard */}
             <ion-icon name="analytics"></ion-icon>
             <span className="text">Dashboard</span>
           </Link>
         </li>
+        <li>
+          <Link to="/admin/Chatbot"> {/* Enlace a ChatBot */}
+            <ion-icon name="chatbubbles"></ion-icon>
+            <span className="text">ChatBot</span>
+          </Link>
+        </li>
+
+        <span className="block w-4/5 bg-[#834081] h-0.5"></span>
+
+         <li>
+          <Link to="/admin/Comuna"> {/* Enlace a ChatBot */}
+            <ion-icon name="map"></ion-icon>
+            <span className="text">Comunas</span>
+          </Link>
+        </li>
+        <li>
+          <Link to="/admin/Departamento">
+            <ion-icon name="business"></ion-icon>
+            <span className="text">Departamentos</span>
+          </Link>
+        </li>
+        <li>
+          <Link to="/admin/Genero"> 
+            <ion-icon name="transgender"></ion-icon>
+            <span className="text">Generos</span>
+          </Link>
+        </li>
+        <li>
+          <Link to="/admin/Gravedad"> 
+            <ion-icon name="pulse"></ion-icon>
+            <span className="text">Gravedades</span>
+          </Link>
+        </li>
+        <li>
+          <Link to="/admin/Municipalidad"> 
+            <ion-icon name="contacts"></ion-icon>
+            <span className="text">Municipalidades</span>
+          </Link>
+        </li>
+
+
+       
+        <span className="block w-4/5 bg-[#834081] h-0.5"></span>
+
         <li>
           <Link
             onClick={handleLogout}>
