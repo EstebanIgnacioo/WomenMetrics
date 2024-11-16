@@ -58,16 +58,22 @@ function ListarGeneros() {
       </div>
 
       <div className="container mx-auto mt-5">
-        {/* Campo de búsqueda con icono */}
-        <div className="flex items-center bg-[#742d70] p-3 rounded-xl mb-4 w-full max-w-md mx-start shadow-md">
-          <MagnifyingGlassIcon className="h-5 w-5 text-white mr-3" />
-          <input
-            type="text"
-            placeholder="Buscar por nombre"
-            className="bg-transparent border-none outline-none text-white placeholder-gray-300 w-full"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
+        <div className="flex items-center mb-4 w-full max-w-md mx-start">
+          <div className="flex items-center bg-[#742d70] p-3 rounded-xl">
+            <MagnifyingGlassIcon className="h-5 w-5 text-white mr-3" />
+            <input
+              type="text"
+              placeholder="Buscar por nombre"
+              className="bg-transparent border-none outline-none text-white placeholder-gray-300 w-full"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+          </div>
+          <button
+            className="bg-[#742d70] text-white px-4 py-2 ml-4 rounded-xl shadow-lg hover:bg-[#b148ab]"
+          >
+            <PlusIcon className="h-7" />
+          </button>
         </div>
 
         {/* Tabla de géneros */}
@@ -97,7 +103,6 @@ function ListarGeneros() {
                   </td>
                   <td className="py-3 px-4 border-b flex space-x-2">
                     <PencilIcon className="h-auto w-5 cursor-pointer hover:text-blue-400" />
-                    <PlusIcon className="h-auto w-5 cursor-pointer hover:text-green-400" />
                     <MoonIcon className="h-auto w-5 cursor-pointer hover:text-yellow-400" />
                   </td>
                 </tr>
