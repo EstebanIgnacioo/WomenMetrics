@@ -283,7 +283,7 @@ function ListarDepartamentos() {
             <div className="flex justify-center">
               <button
                 onClick={formData.id_departamento ? handleEditDepartamento : handleAddDepartamento}
-                className="bg-[#742d70] text-white px-4 py-2 rounded hover:bg-[#bd4cb7]"
+                className=" w-full bg-[#742d70] text-white py-2 rounded hover:bg-[#b148ab]"
               >
                 {formData.id_departamento ? "Actualizar" : "Agregar"}
               </button>

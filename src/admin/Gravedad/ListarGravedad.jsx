@@ -1,44 +1,83 @@
 import React, { useEffect, useState } from "react";
-import { MagnifyingGlassIcon, PencilIcon, PlusIcon, MoonIcon, FireIcon } from '@heroicons/react/24/outline';
+import { MagnifyingGlassIcon, PencilIcon, PlusIcon, MoonIcon, FireIcon, XMarkIcon } from "@heroicons/react/24/outline";
 
 function ListarGravedades() {
   const [gravedades, setGravedades] = useState([]);
-  const [searchTerm, setSearchTerm] = useState(""); // Para almacenar el término de búsqueda
-  const [currentPage, setCurrentPage] = useState(1); // Página actual
-  const itemsPerPage = 8; // Máximo de elementos por página
+  const [searchTerm, setSearchTerm] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [formData, setFormData] = useState({ id_gravedad: "", descripcion: "", estado: true });
+  const itemsPerPage = 8;
 
   useEffect(() => {
-    // Llamada a la API para obtener las gravedades
+    fetchGravedades();
+  }, []);
+
+  const fetchGravedades = () => {
     fetch("https://api-women-security-app-544496114867.southamerica-west1.run.app/api/ver-gravedades")
       .then((response) => response.json())
       .then((data) => {
-        // Verifica si el response contiene las gravedades
         if (data.gravedades) {
           setGravedades(data.gravedades);
         }
       })
-      .catch((error) => {
-        console.error("Error al obtener las gravedades:", error);
-      });
-  }, []);
+      .catch((error) => console.error("Error al obtener las gravedades:", error));
+  };
 
-  // Filtrar gravedades por el término de búsqueda
+  const handleAddGravedad = () => {
+    fetch("https://api-women-security-app-544496114867.southamerica-west1.run.app/api/agregar-gravedad", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ descripcion: formData.descripcion }),
+    })
+      .then(() => {
+        fetchGravedades();
+        setModalOpen(false);
+      })
+      .catch((error) => console.error("Error al agregar gravedad:", error));
+  };
+
+  const handleEditGravedad = () => {
+    fetch("https://api-women-security-app-544496114867.southamerica-west1.run.app/api/editar-gravedad", {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id_gravedad: formData.id_gravedad, descripcion: formData.descripcion }),
+    })
+      .then(() => {
+        fetchGravedades();
+        setModalOpen(false);
+      })
+      .catch((error) => console.error("Error al editar gravedad:", error));
+  };
+
+  const handleToggleEstado = (id_gravedad, estado) => {
+    fetch("https://api-women-security-app-544496114867.southamerica-west1.run.app/api/cambiar-estado-gravedad", {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id_gravedad, estado: !estado }),
+    })
+      .then(() => fetchGravedades())
+      .catch((error) => console.error("Error al cambiar estado:", error));
+  };
+
   const filteredGravedades = gravedades.filter((gravedad) =>
     gravedad.descripcion.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  // Calcular el número total de páginas
   const totalPages = Math.ceil(filteredGravedades.length / itemsPerPage);
 
-  // Obtener las gravedades para la página actual
   const paginatedGravedades = filteredGravedades.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
 
-  // Cambiar de página
-  const goToPage = (pageNumber) => {
-    setCurrentPage(pageNumber);
+  const openModal = (gravedad = { id_gravedad: "", descripcion: "", estado: true }) => {
+    setFormData(gravedad);
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
   };
 
   return (
@@ -49,16 +88,13 @@ function ListarGravedades() {
         <div className="text-white">
           <h2 className="text-5xl font-bold pb-2">Gravedades</h2>
           <span className="block w-4/5 bg-[#834081] h-0.5"></span>
-
-          <p className="text-m text-gray-300 mt-1">
-            Aquí puedes gestionar las gravedades.
-          </p>
+          <p className="text-m text-gray-300 mt-1">Aquí puedes gestionar las gravedades.</p>
         </div>
         <FireIcon className="w-40 h-auto text-white p-4 rounded-full shadow-md" />
       </div>
 
       <div className="container mx-auto mt-5">
-      <div className="flex items-center mb-4 w-full max-w-md mx-start">
+        <div className="flex items-center mb-4 w-full max-w-md mx-start">
           <div className="flex items-center bg-[#742d70] p-3 rounded-xl">
             <MagnifyingGlassIcon className="h-5 w-5 text-white mr-3" />
             <input
@@ -70,18 +106,14 @@ function ListarGravedades() {
             />
           </div>
           <button
-            className="bg-[#742d70] text-white px-4 py-2 ml-4 rounded-xl shadow-lg hover:bg-[#b148ab]"
-          >
+            onClick={() => openModal()}
+            className="bg-[#742d70] text-white px-4 py-2 ml-4 rounded-xl shadow-lg hover:bg-[#b148ab]">
             <PlusIcon className="h-7" />
           </button>
         </div>
 
-        {/* Tabla de gravedades */}
         <div className="overflow-x-auto">
-          <table
-            style={{ border: "2px solid #3b1c3a" }}
-            className="min-w-full rounded-xl bg-[#1f0a1e] shadow-lg overflow-hidden"
-          >
+          <table className="min-w-full rounded-xl bg-[#1f0a1e] shadow-lg overflow-hidden">
             <thead>
               <tr className="bg-[#742d70] text-white text-left">
                 <th className="py-3 px-4 border-b-2 font-semibold text-sm">ID Gravedad</th>
@@ -92,18 +124,19 @@ function ListarGravedades() {
             </thead>
             <tbody>
               {paginatedGravedades.map((gravedad) => (
-                <tr
-                  key={gravedad.id_gravedad}
-                  className="text-white hover:bg-[#52224e9a]"
-                >
+                <tr key={gravedad.id_gravedad} className="text-white hover:bg-[#52224e9a]">
                   <td className="py-3 px-4 border-b">{gravedad.id_gravedad}</td>
                   <td className="py-3 px-4 border-b">{gravedad.descripcion}</td>
-                  <td className="py-3 px-4 border-b">
-                    {gravedad.estado ? "Activado" : "Desactivado"}
-                  </td>
+                  <td className="py-3 px-4 border-b">{gravedad.estado ? "Activado" : "Desactivado"}</td>
                   <td className="py-3 px-4 border-b flex space-x-2">
-                    <PencilIcon className="h-auto w-5 cursor-pointer hover:text-blue-400" />
-                    <MoonIcon className="h-auto w-5 cursor-pointer hover:text-yellow-400" />
+                    <PencilIcon
+                      onClick={() => openModal(gravedad)}
+                      className="h-auto w-5 cursor-pointer hover:text-blue-400"
+                    />
+                    <MoonIcon
+                      onClick={() => handleToggleEstado(gravedad.id_gravedad, gravedad.estado)}
+                      className="h-auto w-5 cursor-pointer hover:text-yellow-400"
+                    />
                   </td>
                 </tr>
               ))}
@@ -111,27 +144,50 @@ function ListarGravedades() {
           </table>
         </div>
 
-        {/* Controles de paginación */}
         <div className="flex justify-center items-center mt-4">
           <button
-            onClick={() => goToPage(currentPage - 1)}
+            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
             disabled={currentPage === 1}
-            className="px-4 py-2 mx-1 bg-[#742d70] rounded disabled:opacity-50 hover:bg-[#742d70]"
-          >
+            className="px-4 py-2 mx-1 bg-[#742d70] rounded disabled:opacity-50 hover:bg-[#742d70]">
             Anterior
           </button>
           <span className="px-4 py-2 mx-1">
             Página {currentPage} de {totalPages}
           </span>
           <button
-            onClick={() => goToPage(currentPage + 1)}
+            onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
             disabled={currentPage === totalPages}
-            className="px-4 py-2 mx-1 bg-[#742d70] rounded disabled:opacity-50 hover:bg-[#742d70]"
-          >
+            className="px-4 py-2 mx-1 bg-[#742d70] rounded disabled:opacity-50 hover:bg-[#742d70]">
             Siguiente
           </button>
         </div>
       </div>
+
+      {/* Modal */}
+      {modalOpen && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+          <div className="bg-[#1f0a1e] p-6 rounded-lg w-96 relative">
+            <XMarkIcon
+              className="h-6 w-6 text-white cursor-pointer absolute top-3 right-3"
+              onClick={closeModal}
+            />
+            <h3 className="text-xl text-white font-bold mb-4">
+              {formData.id_gravedad ? "Editar Nombre" : "Agregar Nombre"}
+            </h3>
+            <input
+              type="text"
+              value={formData.descripcion}
+              onChange={(e) => setFormData({ ...formData, descripcion: e.target.value })}
+              className="w-full px-4 py-2 rounded bg-[#742d70] text-white outline-none"
+            />
+            <button
+              onClick={formData.id_gravedad ? handleEditGravedad : handleAddGravedad}
+              className="mt-6 w-full bg-[#742d70] text-white py-2 rounded hover:bg-[#b148ab]">
+              Guardar
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
