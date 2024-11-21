@@ -1,6 +1,8 @@
 "use client";
 
 import { createContext, useState, useEffect, useContext } from "react";
+import { HomeIcon, } from '@heroicons/react/24/outline';
+
 
 // Contexto de autenticación
 const AuthContext = createContext();
@@ -70,10 +72,29 @@ export const AuthContextProvider = ({ children }) => {
     setAuthReady(false); // Opcional: si deseas reiniciar authReady
   };
 
+
+
+   // Función que recarga la página
+   const handleReload = () => {
+    window.location.reload();
+  };
+
   // Renderizado condicional para asegurar que solo se muestren los children cuando authReady sea true
   if (!authReady) {
-    return <div>Loading...</div>; // Puedes poner un spinner de carga aquí si lo prefieres
+    return (
+      <div className="flex flex-col mt-72 items-center justify-center h-full">
+        <h1 className="text-white text-3xl mb-4">Volver a Home</h1>
+        <button
+          onClick={handleReload}
+          className="p-2 bg-[#742d70] text-white rounded-full"
+        >
+          <HomeIcon className="w-16 h-16 p-2 rounded-full mx-auto" />
+        </button>
+      </div>
+    );
   }
+
+
 
   return (
     <AuthContext.Provider value={{ user, authReady, login, logout }}>
