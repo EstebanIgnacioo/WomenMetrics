@@ -19,7 +19,7 @@ function ChatBot() {
     const conversationHistory = answerList.map(msg => msg.content).join("\n");
 
     const response = await axios({
-      url: "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=AIzaSyDToUtcdI8kPS80B8fV8-aI5A8Qk0Pm0ZM",
+      url: "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=AIzaSyDP9t-AsOyN6050-7C2n73xB1fUjhouVmo",
       method: "post",
       data: {
         "contents": [{ "parts": [{ "text": `${context}\n\n${conversationHistory}\nUsuario: ${userQuestion}` }] }],
