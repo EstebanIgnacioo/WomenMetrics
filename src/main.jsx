@@ -16,6 +16,9 @@ import ListarDepartamentos from "./admin/Departamento/ListarDepartamentos";
 import ListarGeneros from "./admin/Genero/ListarGenero";
 import ListarGravedades from "./admin/Gravedad/ListarGravedad";
 import ListarMunicipalidades from "./admin/Municipalidad/ListarMunicipalidades";
+import Alertas from "./admin/Alertas/Alertas";
+import ListarPersonas from "./admin/Personas/ListarPersonas";
+import Perfil from "./admin/Perfil/Perfil";
 
 import "./index.css";
 
@@ -46,6 +49,9 @@ createRoot(document.getElementById("root")).render(
             <Route path="genero" element={<ListarGeneros />} />
             <Route path="gravedad" element={<ListarGravedades />} />
             <Route path="municipalidad" element={<ListarMunicipalidades />} />
+            <Route path="alertas" element={<Alertas />} />
+            <Route path="personas" element={<ListarPersonas />} />
+            <Route path="perfil" element={<Perfil />} />
           </Route>
         </Routes>
       </Router>

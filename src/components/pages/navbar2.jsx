@@ -44,6 +44,18 @@ function Navbar() {
             <span className="text">ChatBot</span>
           </Link>
         </li>
+        <li>
+          <Link to="/admin/Alertas"> 
+            <ion-icon name="notifications"></ion-icon>
+            <span className="text">Alertas</span>
+          </Link>
+        </li>
+        <li>
+          <Link to="/admin/Perfil"> 
+            <ion-icon name="person"></ion-icon>
+            <span className="text">Perfil</span>
+          </Link>
+        </li>
 
         <span className="block w-4/5 bg-[#834081] h-0.5"></span>
 
@@ -75,6 +87,12 @@ function Navbar() {
           <Link to="/admin/Municipalidad"> 
             <ion-icon name="contacts"></ion-icon>
             <span className="text">Municipalidades</span>
+          </Link>
+        </li>
+        <li>
+          <Link to="/admin/Personas"> 
+            <ion-icon name="people"></ion-icon>
+            <span className="text">Perfiles</span>
           </Link>
         </li>
 

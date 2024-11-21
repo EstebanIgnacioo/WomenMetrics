@@ -2,7 +2,6 @@
 
 import { createContext, useState, useEffect, useContext } from "react";
 
-
 // Contexto de autenticación
 const AuthContext = createContext();
 
@@ -18,28 +17,40 @@ export const AuthContextProvider = ({ children }) => {
       setUser(JSON.parse(storedUser)); // Si hay un usuario, cargamos su información
     }
     setAuthReady(true); // Marcamos como listo el contexto
-    console.log(storedUser)
   }, []);
 
   // Función de login que hace la llamada a la API
   const login = async (email, password) => {
     try {
-      const response = await fetch("https://api-women-security-app-544496114867.southamerica-west1.run.app/api/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ correo: email, password }),
-      });
+      const response = await fetch(
+        "https://api-women-security-app-544496114867.southamerica-west1.run.app/api/login-admin",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ correo: email, password }),
+          
+        }
+        
+      );
 
+   
       // Verificar si la respuesta es 200 OK
       if (response.ok) {
         const data = await response.json();
-        if (data.persona) {
+        console.log(data)
+       
+
+        if (data.persona && data.perfil) {
+          // Guardamos toda la información del usuario
           const userData = {
-            rut: data.persona.rut, // Solo guardamos el `rut` o los datos necesarios
+            persona: data.persona,
+            perfil: data.perfil,
           };
+
           setUser(userData);
           localStorage.setItem("user", JSON.stringify(userData)); // Guardamos el usuario en localStorage
-          console.log(userData)
+          console.log("Usuario autenticado:", userData);
+          
         } else {
           throw new Error("Respuesta de la API no contiene datos válidos.");
         }
@@ -59,20 +70,10 @@ export const AuthContextProvider = ({ children }) => {
     setAuthReady(false); // Opcional: si deseas reiniciar authReady
   };
 
-  
-
   // Renderizado condicional para asegurar que solo se muestren los children cuando authReady sea true
-  //if (!authReady) {
-  //  return <div>Loading...</div>; // Puedes poner un spinner de carga aquí si lo prefieres
-  //} //
-
-   // Renderizado condicional para asegurar que solo se muestren los children cuando authReady sea true
   if (!authReady) {
     return <div>Loading...</div>; // Puedes poner un spinner de carga aquí si lo prefieres
-  } //
-
-
-
+  }
 
   return (
     <AuthContext.Provider value={{ user, authReady, login, logout }}>

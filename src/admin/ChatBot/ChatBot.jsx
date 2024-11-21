@@ -59,7 +59,7 @@ function ChatBot() {
       className="flex flex-col items-center justify-center w-[60%] mx-auto p-10 rounded-xl">
         
 
-        <div className="w-full max-w-6xl h-[530px] bg-[#742d70] rounded-3xl overflow-y-auto p-6 shadow-lg mb-6 scrollbar-thin scrollbar-thumb-[#742d70] scrollbar-track-gray scrollbar-rounded-lg">
+        <div className="w-full max-w-6xl h-[530px] bg-[#1f0a1e] rounded-3xl overflow-y-auto p-6 shadow-lg mb-6 scrollbar-thin scrollbar-thumb-[#742d70] scrollbar-track-gray scrollbar-rounded-lg">
           {answerList.length === 0 && (
             <div>
             <ChatBubbleBottomCenterIcon className="w-20 pb-11 text-center mx-auto h-auto translate-y-52 bg-[#834081] text-white p-4  rounded-full shadow-md" />
