@@ -108,10 +108,7 @@ function Navbar() {
           </Link>
         </li>
       </ul>
-      <li>
-        <ion-icon name="help"></ion-icon>
-        <span className="text">About us</span>
-      </li>
+
     </nav>
   );
 }
